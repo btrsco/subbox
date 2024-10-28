@@ -55,15 +55,6 @@ const onSubmit = handleSubmit((values) => {
                 <p class="text-muted-foreground">Register to access your dashboard, settings and content.</p>
             </Stack>
 
-            <!--<Stack class="space-y-4">-->
-            <!--    <Button type="submit" block variant="outline">-->
-            <!--        <TwitterIcon class="size-5 mr-2" />-->
-            <!--        Connect with Twitter-->
-            <!--    </Button>-->
-            <!--</Stack>-->
-
-            <!--<TextSeparator text="or sign in with email" size="sm" />-->
-
             <form class="space-y-4" @submit.prevent="onSubmit">
 
                 <FormField
@@ -176,8 +167,10 @@ const onSubmit = handleSubmit((values) => {
 
                 <Button
                     type="submit"
+                    variant="accent"
                     :disabled="form.processing"
-                    block>
+                    block
+                >
                     Register
                     <ArrowRightIcon class="size-4 ml-2" />
                 </Button>

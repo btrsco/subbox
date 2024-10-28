@@ -9,6 +9,10 @@ export interface AppLayoutProps extends LayoutProps {
     // ...
 }
 
+export interface OnboardingLayout extends LayoutProps {
+    blog?: App.Models.Blog
+}
+
 export interface AuthLayoutProps extends LayoutProps {
     hideNavigation?: boolean
     fullWidth?: boolean

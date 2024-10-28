@@ -15,6 +15,7 @@ export const buttonVariants = cva(
                 secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
                 ghost: 'hover:bg-accent hover:text-accent-foreground',
                 link: 'underline-offset-4 hover:underline',
+                accent: 'bg-accent-foreground text-white hover:shadow-lg transition-all',
             },
             size: {
                 default: 'h-9 px-4 py-2',

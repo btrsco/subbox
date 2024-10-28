@@ -134,6 +134,7 @@ const toggleRecoveryCodeInput = () => {
 
                 <Button
                     type="submit"
+                    variant="accent"
                     :disabled="form.processing || (verificationCode.length !== 6 && !showRecoveryCodeInput)"
                     block
                 >

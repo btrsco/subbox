@@ -2,16 +2,18 @@
 
 namespace App\Services;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\CanTransactWithDatabase;
 
 readonly class Service
 {
+    use CanTransactWithDatabase;
+
     public function __construct(
-        public Model $model
+        private string $modelKey
     ) {}
 
     public function setRelation(string $relation, mixed $value): void
     {
-        $this->model->{$relation}()->associate($value);
+        $this->{$this->modelKey}->{$relation}()->associate($value);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Enums\MetricKey;
 use App\Models\Metric;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -18,6 +19,36 @@ trait HasMetrics
     }
 
     /**
+     * Check if a metric exists for given key, year and month.
+     *
+     * @param  MetricKey  $key
+     * @param  int|null  $year
+     * @param  int|null  $month
+     *
+     * @return bool
+     */
+    public function hasMetric(MetricKey $key, ?int $year = null, ?int $month = null): bool
+    {
+        return $this->metrics()->where([
+            'key'   => $key,
+            'year'  => $year ?? now()->year,
+            'month' => $month ?? now()->month,
+        ])->exists();
+    }
+
+    /**
+     * Check if a metric exists for given key.
+     *
+     * @param  MetricKey  $key
+     *
+     * @return bool
+     */
+    public function metricExists(MetricKey $key): bool
+    {
+        return $this->metrics()->where('key', $key)->exists();
+    }
+
+    /**
      * Increment a metric by a given value.
      *
      * @param  mixed  $key
@@ -27,12 +58,10 @@ trait HasMetrics
      *
      * @return void
      */
-    public function incrementMetric(mixed $key, int $value = 1, ?int $year = null, ?int $month = null): void
+    public function incrementMetric(MetricKey $key, int $value = 1, ?int $year = null, ?int $month = null): void
     {
-        $key = is_enum($key) ? $key->value : $key;
-
         $this->metrics()->firstOrCreate([
-            'key'   => $key,
+            'key'   => $key->value,
             'year'  => $year ?? now()->year,
             'month' => $month ?? now()->month,
         ], [
@@ -50,12 +79,10 @@ trait HasMetrics
      *
      * @return void
      */
-    public function decrementMetric(mixed $key, int $value = 1, ?int $year = null, ?int $month = null): void
+    public function decrementMetric(MetricKey $key, int $value = 1, ?int $year = null, ?int $month = null): void
     {
-        $key = is_enum($key) ? $key->value : $key;
-
         $this->metrics()->where([
-            'key'   => $key,
+            'key'   => $key->value,
             'year'  => $year ?? now()->year,
             'month' => $month ?? now()->month,
         ])->first()?->decrement('value', $value);
@@ -70,12 +97,10 @@ trait HasMetrics
      *
      * @return void
      */
-    public function resetMetric(mixed $key, ?int $year = null, ?int $month = null): void
+    public function resetMetric(MetricKey $key, ?int $year = null, ?int $month = null): void
     {
-        $key = is_enum($key) ? $key->value : $key;
-
         $this->metrics()->where([
-            'key'   => $key,
+            'key'   => $key->value,
             'year'  => $year ?? now()->year,
             'month' => $month ?? now()->month,
         ])->first()?->update(['value' => 0]);

@@ -145,7 +145,7 @@ each of these dependencies by clicking on the links below.
 **Composer:**
 
 - [`laravel/breeze`](https://laravel.com/docs/11.x/starter-kits#laravel-breeze): Simple authentication scaffolding
-- [`'itsgoingd/clockwork'`](https://github.com/itsgoingd/clockwork): Debugging package
+- [`itsgoingd/clockwork`](https://github.com/itsgoingd/clockwork): Debugging package
 - [`spatie/typescript-transformer`](https://spatie.be/docs/typescript-transformer/v2/introduction): Typescript transformer for Laravel
 - [`tightenco/ziggy`](ziggy-docs): Usable routes in Javascript
 - [`lorisleiva/laravel-actions`](https://laravelactions.com/): Classes that handle actions

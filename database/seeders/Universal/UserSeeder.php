@@ -2,7 +2,6 @@
 
 namespace Database\Seeders\Universal;
 
-use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,9 +13,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name'     => 'Administrator',
-            'email'    => 'admin@example.com',
-            'role'     => UserRole::ROOT,
+            'name'     => 'Example User',
+            'email'    => 'user@example.com',
             'password' => bcrypt('password'),
         ]);
     }

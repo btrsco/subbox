@@ -73,8 +73,10 @@ const onSubmit = handleSubmit((values) => {
 
                 <Button
                     type="submit"
+                    variant="accent"
                     :disabled="form.processing"
-                    block>
+                    block
+                >
                     Email reset link
                     <ArrowRightIcon class="size-4 ml-2" />
                 </Button>

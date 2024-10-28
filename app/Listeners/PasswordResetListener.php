@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Enums\Metric;
+use App\Enums\MetricKey;
 use Illuminate\Auth\Events\PasswordReset;
 
 class PasswordResetListener
@@ -11,6 +11,6 @@ class PasswordResetListener
 
     public function handle(PasswordReset $event): void
     {
-        $event->user->incrementMetric(Metric::PASSWORD_RESET);
+        $event->user->incrementMetric(MetricKey::PASSWORD_RESET);
     }
 }

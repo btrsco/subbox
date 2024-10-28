@@ -1,4 +1,4 @@
 declare namespace App.Enums {
-    export type Metric = 'login' | 'logout'
-    export type UserRole = 'root' | 'admin' | 'mod' | 'user' | 'guest'
+    export type MetricKey = 'auth.login' | 'auth.logout' | 'auth.register' | 'auth.password_reset'
+        | 'auth.email_verified' | 'onboarding.started' | 'onboarding.completed'
 }

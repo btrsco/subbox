@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Enums\Metric;
+use App\Enums\MetricKey;
 use App\Events\Auth\LoggedOut;
 
 class LoggedOutListener
@@ -11,7 +11,6 @@ class LoggedOutListener
 
     public function handle(LoggedOut $event): void
     {
-        $event->user->incrementMetric(Metric::LOGOUT);
-        $event->user->repository()->logLastActive();
+        $event->user->incrementMetric(MetricKey::LOGOUT);
     }
 }

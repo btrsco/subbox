@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Metric extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable
         = [
             'measurable',
@@ -16,6 +21,9 @@ class Metric extends Model
             'year',
             'month',
         ];
+
+    /* Relationships
+     * - - - - - - - - - - - - - */
 
     public function measurable(): MorphTo
     {

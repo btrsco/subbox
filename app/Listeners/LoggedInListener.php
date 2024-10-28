@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Enums\Metric;
+use App\Enums\MetricKey;
 use App\Events\Auth\LoggedIn;
 
 class LoggedInListener
@@ -11,7 +11,6 @@ class LoggedInListener
 
     public function handle(LoggedIn $event): void
     {
-        $event->user->incrementMetric(Metric::LOGIN);
-        $event->user->repository()->logLastLoggedIn();
+        $event->user->incrementMetric(MetricKey::LOGIN);
     }
 }

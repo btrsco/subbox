@@ -114,3 +114,9 @@ const navigation = $page.props.auth.user
 
     </section>
 </template>
+
+<style lang="scss">
+body {
+    @apply bg-background;
+}
+</style>

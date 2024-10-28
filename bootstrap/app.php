@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
-            \App\Http\Middleware\LogLastActive::class,
+            \App\Http\Middleware\EnsureOnboardingCompleted::class,
         ]);
     })
     ->withEvents(discover: [

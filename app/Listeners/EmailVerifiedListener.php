@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Enums\Metric;
+use App\Enums\MetricKey;
 use Illuminate\Auth\Events\Verified;
 
 class EmailVerifiedListener
@@ -12,7 +12,7 @@ class EmailVerifiedListener
     public function handle(Verified $event): void
     {
         if ($event->user instanceof \App\Models\User) {
-            $event->user->incrementMetric(Metric::EMAIL_VERIFIED);
+            $event->user->incrementMetric(MetricKey::EMAIL_VERIFIED);
         }
     }
 }

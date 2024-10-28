@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use App\Enums\UserRole;
+use App\Traits\HasInitials;
 use App\Traits\HasMetrics;
-use App\Traits\HasRepository;
+use App\Traits\HasService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -16,13 +17,15 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 /**
  * App\Models\User
  *
- * @method \App\Repositories\UserRepository repository()
+ * @method \App\Services\UserService service()
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory,
         HasMetrics,
-        HasRepository,
+        HasService,
+        HasInitials,
         Notifiable,
         TwoFactorAuthenticatable;
 
@@ -38,8 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
             'password',
             'role',
             'email_verified_at',
-            'last_logged_in_at',
-            'last_active_at',
         ];
 
     /**
@@ -62,15 +63,27 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'password'          => 'hashed',
-            'role'              => UserRole::class,
             'email_verified_at' => 'datetime',
-            'last_logged_in_at' => 'datetime',
-            'last_active_at'    => 'datetime',
         ];
     }
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string> $appends
+     */
+    protected $appends
+        = [
+            'initials',
+        ];
+
     /* Relationships
      * - - - - - - - - - - - - - */
+
+    public function blog(): HasOne
+    {
+        return $this->hasOne(Blog::class);
+    }
 
     public function sessions(): HasMany
     {
@@ -78,12 +91,8 @@ class User extends Authenticatable implements MustVerifyEmail
             ->orderBy('last_activity', 'desc');
     }
 
-    /* Scopes
-     * - - - - - - - - - - - - - */
-
-    public function scopeOfRole(Builder $query, mixed $role): void
+    public function subscriptions(): MorphMany
     {
-        $role = is_enum($role) ? $role->value : $role;
-        $query->where('role', $role);
+        return $this->morphMany(Subscription::class, 'subscriber');
     }
 }

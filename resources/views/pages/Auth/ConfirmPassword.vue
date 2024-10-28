@@ -79,8 +79,10 @@ const onSubmit = handleSubmit((values) => {
 
                 <Button
                     type="submit"
+                    variant="accent"
                     :disabled="form.processing"
-                    block>
+                    block
+                >
                     Confirm
                     <ArrowRightIcon class="size-4 ml-2" />
                 </Button>
