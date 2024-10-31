@@ -1,11 +1,30 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import vue from '@vitejs/plugin-vue'
+import laravel from 'laravel-vite-plugin'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
+    resolve: {
+        extensions: [ '.js', '.vue', '.ts', '.json', '.scss' ],
+        alias:      {
+            '@': '/resources',
+        },
+    },
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input:   [
+                'resources/scripts/app.ts',
+                'resources/styles/app.scss',
+            ],
+            ssr:     'resources/scripts/ssr.ts',
             refresh: true,
         }),
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base:            null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
     ],
-});
+})
