@@ -23,7 +23,7 @@ const props = defineProps<{
     <BlogLayout
         :email-verified="props.emailVerified"
         :first-visit="props.firstVisit"
-        :title="props.blog.name"
+        :title="'About - ' + props.blog.name"
         :blog="props.blog"
         :status="props.status"
         narrow
