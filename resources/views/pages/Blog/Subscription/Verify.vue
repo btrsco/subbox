@@ -5,6 +5,7 @@ import { Link } from '@inertiajs/vue3'
 import { ChevronRightIcon } from 'lucide-vue-next'
 import { Stack } from '@/views/components/bespoke/stack'
 import { Avatar, AvatarFallback, AvatarImage } from '@/views/components/ui/avatar'
+import PageHead from '@/views/components/utils/PageHead.vue'
 
 const props = defineProps<{
     blog: App.Models.Blog
@@ -12,6 +13,8 @@ const props = defineProps<{
 </script>
 
 <template>
+    <PageHead :title="'Email verified - ' + props.blog.name" />
+
     <Stack
         justify="center"
         items="center"

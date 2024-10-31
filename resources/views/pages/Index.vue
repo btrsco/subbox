@@ -3,12 +3,14 @@ import { Stack } from '@/views/components/bespoke/stack'
 import { BookmarkIcon } from 'lucide-vue-next'
 import { Button } from '@/views/components/ui/button'
 import { Link, usePage } from '@inertiajs/vue3'
+import PageHead from '@/views/components/utils/PageHead.vue'
 
 const $page = usePage()
 const app = $page.props.app
 </script>
 
 <template>
+    <PageHead title="Home for your thoughts" />
     <Stack
         class="w-full min-h-screen bg-muted/50"
     >

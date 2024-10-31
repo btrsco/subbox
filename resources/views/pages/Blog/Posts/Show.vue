@@ -45,7 +45,7 @@ const paragraphs = props.post.content?.split('\n\n')
     <BlogLayout
         :email-verified="props.emailVerified"
         :first-visit="false"
-        :title="props.blog.name"
+        :title="props.post.title + ' - ' + props.blog.name"
         :blog="props.blog"
         :status="props.status"
     >

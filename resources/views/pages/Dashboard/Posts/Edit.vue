@@ -96,7 +96,7 @@ const indicatorLabel = computed(() => {
 </script>
 
 <template>
-    <PageHead :title="'Testing'" />
+    <PageHead :title="form.title" />
 
     <Stack class="bg-muted/50 w-full h-screen absolute inset-0">
         <Stack
