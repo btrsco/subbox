@@ -27,9 +27,14 @@ class BlogSubscriptionOptInNotification extends Notification implements ShouldQu
         $blog = Blog::find($this->subscription->blog_id);
 
         return (new MailMessage)
+            ->subject("Confirm your subscription to {$blog->name}")
             ->line("Before we send you emails, we need to confirm your subscription to " .
-                "<a href='{$blog->url}'>{$blog->name}</a>. Please click the button below.")
-            ->action('Confirm subscription', route('subscriptions.verify', $this->subscription));
+                "[{$blog->name}]({$blog->url}). Please click the button below.")
+            ->action('Confirm subscription', route('blog.subscription.verify', [
+                'blog'         => $blog->slug,
+                'subscription' => $this->subscription->id,
+                'token'        => $this->subscription->verification_token,
+            ]));
     }
 
     public function toArray($notifiable): array

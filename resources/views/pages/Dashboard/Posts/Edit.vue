@@ -187,7 +187,7 @@ const indicatorLabel = computed(() => {
 
                 <ContentEditable
                     v-model="form.subtitle"
-                    class="sm:text-lg"
+                    class="sm:text-xl text-muted-foreground"
                     placeholder="Add a subtitle..."
                 />
 

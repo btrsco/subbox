@@ -3,12 +3,10 @@
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/')->name('home.')->group(function () {
-    Route::get('/', [Dashboard\HomeController::class, 'index'])
-        ->name('index');
-    Route::post('/hide-welcome', [Dashboard\HomeController::class, 'hideWelcome'])
-        ->name('hide-welcome');
-});
+Route::get('/', [Dashboard\HomeController::class, 'index'])
+    ->name('index');
+Route::post('/hide-welcome', [Dashboard\HomeController::class, 'hideWelcome'])
+    ->name('hide-welcome');
 
 Route::prefix('/posts')->name('posts.')->group(function () {
     Route::get('/', [Dashboard\PostController::class, 'index'])

@@ -12,7 +12,7 @@ class CompleteController extends Controller
     public function index()
     {
         if (auth()->user()->hasMetric(MetricKey::ONBOARDING_COMPLETED)) {
-            return redirect()->route('dashboard.home.index');
+            return redirect()->route('dashboard.index');
         }
 
         return Inertia::render('Onboarding/Complete', [
@@ -25,6 +25,6 @@ class CompleteController extends Controller
         $user = $request->user();
         $user->incrementMetric(MetricKey::ONBOARDING_COMPLETED);
 
-        return redirect()->route('dashboard.home.index');
+        return redirect()->route('dashboard.index');
     }
 }

@@ -13,6 +13,8 @@ class SubscribedToBlogListener
     {
         $subscriber = $event->subscription->subscriber;
 
-        $subscriber->notify(new BlogSubscriptionOptInNotification($event->subscription));
+        if (is_null($event->subscription->email_verified_at)) {
+            $subscriber->notify(new BlogSubscriptionOptInNotification($event->subscription));
+        }
     }
 }

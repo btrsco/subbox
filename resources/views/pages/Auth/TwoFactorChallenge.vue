@@ -39,7 +39,7 @@ const onSubmit = () => {
             onSuccess: () => {
                 if (props.status !== 'two-factor-challenge-passed') return
 
-                router.visit(route('dashboard.home.index'))
+                router.visit(route('dashboard.index'))
             },
         })
     } else {
@@ -53,7 +53,7 @@ const onSubmit = () => {
             onSuccess: () => {
                 if (props.status !== 'two-factor-challenge-passed') return
 
-                router.visit(route('dashboard.home.index'))
+                router.visit(route('dashboard.index'))
             },
         })
     }

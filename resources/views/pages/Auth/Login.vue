@@ -49,7 +49,7 @@ const updateRemember = (value: boolean) => {
 }
 
 const onPasskeySuccess = () => {
-    router.visit(route('dashboard.home.index'))
+    router.visit(route('dashboard.index'))
 }
 </script>
 

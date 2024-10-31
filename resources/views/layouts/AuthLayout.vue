@@ -27,7 +27,7 @@ const guestNavigation: NavigationItem[] = [
 const authenticatedNavigation: NavigationItem[] = [
     {
         label: 'Dashboard',
-        route: 'dashboard.home.index',
+        route: 'dashboard.index',
         type: 'link',
     },
     {

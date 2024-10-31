@@ -45,10 +45,7 @@ const postStatusLabel = (post: App.Models.Post) => {
             :as="Link"
             :href="route('dashboard.posts.edit', { post: post.id })"
         >
-            <PostImagePreview
-                v-if="!props.noImage"
-                :post="post"
-            />
+            <PostImagePreview v-if="!props.noImage" />
 
             <Stack
                 class="w-full"

@@ -111,7 +111,7 @@ const emailVerified = $page.props.auth.email_verified === true
                         >
                             <Link
                                 as="button"
-                                :href="route('dashboard.home.hide-welcome')"
+                                :href="route('dashboard.hide-welcome')"
                                 method="post"
                             >
                                 Complete Setup
@@ -154,6 +154,7 @@ const emailVerified = $page.props.auth.email_verified === true
                     no-image
                 />
                 <EmptyState
+                    v-else
                     action-label="New post"
                     :action-href="route('dashboard.posts.create')"
                 >

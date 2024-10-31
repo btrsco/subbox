@@ -14,7 +14,7 @@ class SubscriberController extends Controller
         $user = $request->user();
         $blog = $user->blog;
 
-        return Inertia::render('Dashboard/Subscribers/Index', [
+        return Inertia::render('Dashboard/Subscribers', [
             'subscriptions' => $blog->subscriptions()->with('subscriber')->paginate(10),
         ]);
     }

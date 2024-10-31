@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Inertia\Inertia;
 
-class HomeController extends Controller
+class AboutController extends Controller
 {
     public function index(Blog $blog)
     {
@@ -19,14 +19,13 @@ class HomeController extends Controller
         }
 
         if ($firstVisit) {
-            session()->put('blog_visited:'.$blog->id, true);
+            session()->put('blog_visited:' . $blog->id, true);
         }
 
-        return Inertia::render('Blog/Index', [
+        return Inertia::render('Blog/About', [
             'emailVerified' => $blog->is_verified,
             'firstVisit'    => $firstVisit,
             'blog'          => $blog,
-            'posts'         => $blog->posts()->published()->latest('published_at')->paginate(10),
             'user'          => $blog->user,
             'status'        => session('status'),
         ]);

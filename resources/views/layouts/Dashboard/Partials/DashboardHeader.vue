@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3'
 import { NavigationItem, PageProps } from '@/types'
-import { SettingsIcon, GlobeIcon } from 'lucide-vue-next'
+import { SettingsIcon, GlobeIcon, LayoutGridIcon } from 'lucide-vue-next'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -14,10 +14,11 @@ import ThemeToggle from '@/views/components/bespoke/theme-toggle/ThemeToggle.vue
 import { Stack } from '@/views/components/bespoke/stack'
 import { Avatar, AvatarFallback, AvatarImage } from '@/views/components/ui/avatar'
 import { url } from '@/scripts/lib/url'
+import { Button } from '@/views/components/ui/button'
 
 const props = defineProps<{
     app: PageProps.App
-    user: App.Models.User
+    user?: App.Models.User
     blog: App.Models.Blog
     navigation: NavigationItem[]
 }>()
@@ -68,7 +69,7 @@ const props = defineProps<{
         >
             <ThemeToggle />
 
-            <DropdownMenu >
+            <DropdownMenu v-if="props.user">
                 <DropdownMenuTrigger as-child>
                     <Avatar
                         shape="circle"
@@ -104,7 +105,17 @@ const props = defineProps<{
                             class="cursor-pointer"
                         >
                             <GlobeIcon class="size-4 mr-2" />
-                            Blog
+                            View blog
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem as-child>
+                        <Link
+                            :href="route('dashboard.index')"
+                            class="cursor-pointer"
+                        >
+                            <LayoutGridIcon class="size-4 mr-2" />
+                            Dashboard
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem as-child>
@@ -128,6 +139,28 @@ const props = defineProps<{
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
+
+            <template
+                v-else
+            >
+                <Button
+                    :as="Link"
+                    variant="secondary"
+                    size="sm"
+                    :href="route('login')"
+                >
+                    Log in
+                </Button>
+
+                <Button
+                    :as="Link"
+                    variant="accent"
+                    size="sm"
+                    :href="route('register')"
+                >
+                    Register
+                </Button>
+            </template>
         </Stack>
 
     </Stack>
@@ -145,7 +178,7 @@ const props = defineProps<{
             <Link
                 v-for="item in props.navigation.filter(item => item.type === 'link')"
                 :key="item.route"
-                :href="route(item.route)"
+                :href="route(item.route, item.params ?? undefined)"
                 class="h-10 px-4 group hover:bg-muted"
             >
                 <li

@@ -13,7 +13,7 @@ class PostUpdateRequest extends FormRequest
             'title'        => 'required',
             'subtitle'     => 'nullable',
             'content'      => 'nullable',
-            'published_at' => ['nullable', new PublishedAt()],
+            'published_at' => 'nullable',
         ];
     }
 }

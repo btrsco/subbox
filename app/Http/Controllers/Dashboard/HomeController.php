@@ -14,12 +14,12 @@ class HomeController extends Controller
         $user = auth()->user();
         $blog = $user->blog;
 
-        return Inertia::render('Dashboard/Home', [
+        return Inertia::render('Dashboard/Index', [
             'recentlyVerified' => $request->query('verified') === '1',
             'setupCompleted'   => $user->metricExists(MetricKey::SETUP_COMPLETED),
             'subscriberCount'  => $blog->subscriptions()->count(),
-            'draftPosts'       => $blog->posts()->drafts()->latest()->paginate(3),
-            'recentPosts'      => $blog->posts()->published()->latest()->paginate(5),
+            'draftPosts'       => $blog->posts()->drafts()->latest('updated_at')->paginate(3),
+            'recentPosts'      => $blog->posts()->published()->latest('published_at')->paginate(5),
             'postCount'        => $blog->posts()->count(),
         ]);
     }
@@ -29,6 +29,6 @@ class HomeController extends Controller
         $user = $request->user();
         $user->incrementMetric(MetricKey::SETUP_COMPLETED);
 
-        return redirect()->route('dashboard.home.index');
+        return redirect()->route('dashboard.index');
     }
 }

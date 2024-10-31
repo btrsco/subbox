@@ -9,7 +9,7 @@ Access a demo version of this application on [subbox.deploy.page](https://subbox
 ## Table of Contents
 
 <!-- TOC -->
-* [Subbox](#subbox)
+* [Subbox - Stubstack-like blog platform](#subbox---stubstack-like-blog-platform)
   * [Table of Contents](#table-of-contents)
 * [Getting Started](#getting-started)
   * [Assumptions](#assumptions)
@@ -88,10 +88,10 @@ Build the frontend assets, this will also build the SSR assets:
 npm run build
 ```
 
-You can now run the SSR server:
+You can now run the queue worker in a separate terminal:
 
 ```shell
-php artisan inertia:start-ssr
+npm run queue
 ```
 
 ## Database Seeding
@@ -116,6 +116,12 @@ following command:
 ```shell
 php artisan migrate:fresh --seed
 ```
+
+**Note**: You can use the following credentials to log in once the seeders have
+been run, this user should have some posts and subscribers:
+
+- Email: `user@example.com`
+- Password: `password`
 
 # Code Overview
 
@@ -144,31 +150,28 @@ each of these dependencies by clicking on the links below.
 
 **Composer:**
 
-- [`laravel/breeze`](https://laravel.com/docs/11.x/starter-kits#laravel-breeze): Simple authentication scaffolding
+- [`laravel/fortify`](https://laravel.com/docs/11.x/fortify): Authentication package
 - [`itsgoingd/clockwork`](https://github.com/itsgoingd/clockwork): Debugging package
-- [`spatie/typescript-transformer`](https://spatie.be/docs/typescript-transformer/v2/introduction): Typescript transformer for Laravel
+- [`jenssegers/agent`](https://github.com/jenssegers/agent): User agent package (used for sessions)
 - [`tightenco/ziggy`](ziggy-docs): Usable routes in Javascript
-- [`lorisleiva/laravel-actions`](https://laravelactions.com/): Classes that handle actions
-- [`pestphp/pest`](pest-docs): Minimal PHP testing suite
+- [`spatie/laravel-sluggable`](https://github.com/spatie/laravel-sluggable): Dynamic slugs package
 
 **Node:**
 - [`@inertiajs/vue3`](https://inertiajs.com/): Inertia.js
 - [`@vue/server-renderer`](https://v3.vuejs.org/guide/ssr/introduction.html): Vue 3 server renderer
 - [`@vueuse/core`](https://vueuse.org/): Collection of essential Vue Composition API utils
-- [`axios`](https://axios-http.com/docs/intro): Promise based HTTP client
 - [`class-variance-authority`](https://www.npmjs.com/package/class-variance-authority): Class variance authority
 - [`clsx`](https://www.npmjs.com/package/clsx): A tiny utility for constructing className strings conditionally
 - [`dayjs`](https://day.js.org/): Fast 2kB alternative to Moment.js with the same modern API
-- [`lodash`](https://lodash.com/): A modern JavaScript utility library delivering modularity, performance & extras
 - [`lucide-vue-next`](https://www.npmjs.com/package/lucide-vue-next): Lucide icons for Vue 3
 - [`radix-vue`](https://www.npmjs.com/package/radix-vue): A collection of Vue components and utilities
 - [`sass`](https://sass-lang.com/): Sass is the most mature, stable, and powerful professional grade CSS extension language in the world
+- [`shadcn-vue`](https://www.npmjs.com/package/shadcn-vue): A collection of Vue components and utilities
 - [`tailwind-merge`](https://www.npmjs.com/package/tailwind-merge): Tailwind CSS plugin to merge classes
 - [`tailwindcss`](https://tailwindcss.com/): Tailwind CSS
 - [`typescript`](https://www.typescriptlang.org/): TypeScript
 - [`vee-validate`](https://vee-validate.logaretm.com/v4/): Template-based validation framework for Vue.js
 - [`vite`](https://vitejs.dev/): Frontend build tool
-- [`vue-sonner`](https://www.npmjs.com/package/vue-sonner): A simple and lightweight notification plugin for Vue.js
 - [`vue-tsc`](https://www.npmjs.com/package/vue-tsc): A simple and lightweight notification plugin for Vue.js
 - [`vue`](https://vuejs.org/): Vue.js
 - [`ziggy-js`](ziggy-docs): Usable routes in Javascript
@@ -198,14 +201,12 @@ used for.
 - `database/seeders/Universal`: Contains all universal seeders
 - `database/seeders`: Contains all database seeders
 - `public`: Contains all public assets
-- `resources/scripts/types`: Contains all typescript type declarations
+- `resources/types`: Contains all typescript type declarations
 - `resources/scripts`: Contains all javascript files
 - `resources/views`: Contains all blade and vue files
 - `resources`: Contains all resources
-- `routes/api`: Contains all api middleware app routes
 - `routes/web`: Contains all web middleware app routes
 - `routes`: Contains all app routes
-- `tests`: Contains all app tests
 
 ## Environment Variables
 

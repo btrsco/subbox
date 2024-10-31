@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import PageHead from '@/views/components/utils/PageHead.vue'
-import { OnboardingLayout } from '@/types/layouts'
+import { OnboardingLayoutProps } from '@/types/layouts'
 import { BookmarkIcon, ChevronLeftIcon } from 'lucide-vue-next'
 import { Stack } from '@/views/components/bespoke/stack'
 import { Button } from '@/views/components/ui/button'
 
-const props = defineProps<OnboardingLayout>()
+const props = defineProps<OnboardingLayoutProps>()
 </script>
 
 <template>

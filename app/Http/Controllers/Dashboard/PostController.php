@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Events\Posts\Published;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostUpdateRequest;
 use App\Models\Blog;
 use App\Models\Post;
 use App\Rules\PublishedAt;
@@ -51,19 +53,20 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        if ($post->blog->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         return Inertia::render('Dashboard/Posts/Edit', [
             'post' => $post,
         ]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
-        $request->validate([
-            'title'        => 'required',
-            'subtitle'     => 'nullable',
-            'content'      => 'nullable',
-            'published_at' => ['nullable', new PublishedAt()],
-        ]);
+        if ($post->blog->user_id !== auth()->id()) {
+            abort(403);
+        }
 
         $publishedAt = $request->published_at === 'now' ? now() : $request->published_at;
 
@@ -74,11 +77,19 @@ class PostController extends Controller
             'published_at' => $publishedAt,
         ]);
 
+        if ($post->published_at) {
+            event(new Published($post));
+        }
+
         return redirect()->route('dashboard.posts.edit', $post);
     }
 
     public function destroy(Post $post)
     {
+        if ($post->blog->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $post->delete();
 
         return redirect()->back();
@@ -86,6 +97,10 @@ class PostController extends Controller
 
     public function unpublish(Request $request, Post $post)
     {
+        if ($post->blog->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $post->update([
             'published_at' => null,
         ]);

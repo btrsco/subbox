@@ -81,7 +81,8 @@ const publicPostLink = ref(route('blog.posts.show', {
     blog: $page.props.auth.blog?.slug,
     post: props.post.slug
 }))
-const {text, copy, copied, isSupported} = useClipboard({source: publicPostLink.value})
+
+const {copy, copied, isSupported} = useClipboard({source: publicPostLink.value})
 </script>
 
 <template>

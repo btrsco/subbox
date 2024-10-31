@@ -22,7 +22,7 @@ const pageTitle = props.title || blog.name || 'Dashboard'
 const primaryNavigation: NavigationItem[] = [
     {
         label: 'Home',
-        route: 'dashboard.home.index',
+        route: 'dashboard.index',
         type: 'link',
     },
     {
@@ -60,7 +60,7 @@ const primaryNavigation: NavigationItem[] = [
 
         <Stack
             as="main"
-            class="min-h-[calc(100vh_-_theme(spacing.16)_-_theme(spacing.10))] w-full flex-1 mx-auto"
+            class="min-h-[calc(100vh_-_theme(spacing.16)_-_theme(spacing.10))] w-full flex-1 mx-auto gap-2"
             :class="{ 'max-w-4xl': !props.fullWidth }"
         >
 
