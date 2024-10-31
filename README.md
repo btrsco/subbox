@@ -4,8 +4,6 @@
 > Simple Stubstack-like blog platform that allows users to create and update blog posts, allowing guests to view the posts and subscribe to the blog via email.
 > Built as an assessment of my skills as a full-stack developer.
 
-Access a demo version of this application on [subbox.deploy.page](https://subbox.deploy.page).
-
 ## Table of Contents
 
 <!-- TOC -->
