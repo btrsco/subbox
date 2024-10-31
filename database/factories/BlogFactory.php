@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class BlogFactory extends Factory
 {
     /**
+     * The current user ID being used by the factory.
+     */
+    protected static ?int $user_id;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -19,5 +24,18 @@ class BlogFactory extends Factory
         return [
             //
         ];
+    }
+
+    public function faked(): static
+    {
+        $name = fake()->boolean()
+            ? fake()->company()
+            : fake()->firstName();
+        return $this->state(fn(array $attributes) => [
+            'user_id' => static::$user_id ??= \App\Models\User::factory()->faked()->create()->id,
+            'name'    => $name,
+            'slug'    => str($name)->slug(),
+            'bio'     => fake()->paragraph(),
+        ]);
     }
 }

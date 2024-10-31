@@ -10,7 +10,7 @@ export const stackVariants = cva(
                 row: 'flex-row',
                 column: 'flex-col',
             },
-            align: {
+            items: {
                 start: 'items-start',
                 center: 'items-center',
                 end: 'items-end',
@@ -33,7 +33,7 @@ export const stackVariants = cva(
         },
         defaultVariants: {
             direction: 'column',
-            align: 'start',
+            items: 'start',
             justify: 'start',
             wrap: 'none',
         },

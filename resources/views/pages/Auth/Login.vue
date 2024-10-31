@@ -49,7 +49,7 @@ const updateRemember = (value: boolean) => {
 }
 
 const onPasskeySuccess = () => {
-    router.visit(route('dashboard'))
+    router.visit(route('dashboard.home.index'))
 }
 </script>
 
@@ -58,7 +58,7 @@ const onPasskeySuccess = () => {
 
         <section class="w-full max-w-80 space-y-6">
 
-            <Stack align="center" class="text-center gap-2">
+            <Stack items="center" class="text-center gap-2">
                 <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Welcome back</h1>
                 <p class="text-muted-foreground">Log in to access your dashboard, settings and content.</p>
             </Stack>
@@ -130,7 +130,7 @@ const onPasskeySuccess = () => {
                     :validate-on-blur="false">
                     <FormItem class="space-y-1">
 
-                        <Stack direction="row" align="center" class="space-x-1">
+                        <Stack direction="row" items="center" class="space-x-1">
                             <Checkbox
                                 id="remember"
                                 v-bind="componentField"
@@ -157,7 +157,7 @@ const onPasskeySuccess = () => {
             <Stack
                 v-if="props.canRegister"
                 as="footer"
-                align="center"
+                items="center"
                 class="gap-2 text-sm text-center text-muted-foreground"
             >
                 <section>

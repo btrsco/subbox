@@ -27,7 +27,7 @@ const guestNavigation: NavigationItem[] = [
 const authenticatedNavigation: NavigationItem[] = [
     {
         label: 'Dashboard',
-        route: 'dashboard',
+        route: 'dashboard.home.index',
         type: 'link',
     },
     {
@@ -54,7 +54,7 @@ const navigation = $page.props.auth.user
             justify="between"
             class="w-full md:w-1/3 h-4 md:h-full bg-secondary text-secondary-foreground md:p-8">
 
-            <Stack as="header" direction="row" align="center" class="hidden md:flex gap-2">
+            <Stack as="header" direction="row" items="center" class="hidden md:flex gap-2">
                 <BookmarkIcon class="size-6 text-muted-foreground"></BookmarkIcon>
                 <span class="text-lg font-semibold">{{ $page.props.app.name }}</span>
             </Stack>
@@ -71,7 +71,7 @@ const navigation = $page.props.auth.user
 
         <main class="w-full p-4 md:p-8 flex flex-col gap-24 md:gap-12" :class="!props.fullWidth ? 'md:w-2/3' : ''">
 
-            <Stack as="header" direction="row" justify="between" align="center" class="w-full">
+            <Stack as="header" direction="row" justify="between" items="center" class="w-full">
                 <BookmarkIcon class="size-6" :class="!props.fullWidth ? 'md:hidden' : ''"></BookmarkIcon>
 
                 <ul v-if="!props.hideNavigation" class="list-none text-sm flex flex-row ml-auto">
@@ -114,9 +114,3 @@ const navigation = $page.props.auth.user
 
     </section>
 </template>
-
-<style lang="scss">
-body {
-    @apply bg-background;
-}
-</style>

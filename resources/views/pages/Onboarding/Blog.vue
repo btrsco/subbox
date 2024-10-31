@@ -13,7 +13,7 @@ import { useForm as inertiaForm, usePage } from '@inertiajs/vue3'
 import { Textarea } from '@/views/components/ui/textarea'
 import { route } from 'ziggy-js'
 import { ref } from 'vue'
-import { slugify } from '@/scripts/lib/utils'
+import { slugify } from '@/scripts/lib/url'
 
 const $page = usePage()
 const props = defineProps<{
@@ -122,7 +122,7 @@ const handleSlug = (event: Event, force: boolean = false) => {
                                     class=""
                                 >
                                     <div class="flex items-center h-9 rounded-md border border-input bg-muted text-muted-foreground px-3 py-1 text-sm shadow-sm rounded-r-none border-r-0">
-                                        {{ route('home') }}/
+                                        {{ route('home') }}/@
                                     </div>
 
                                     <Input

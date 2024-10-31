@@ -12,8 +12,12 @@ trait HasInitials
             $words = explode(' ', $this->name);
             $initials = '';
 
-            foreach ($words as $word) {
-                $initials .= $word[0];
+            if (count($words) === 1) {
+                return $words[0][0] ?? '';
+            }
+
+            for ($i = 0; $i < 2; $i++) {
+                $initials .= $words[$i][0] ?? '';
             }
 
             return $initials;

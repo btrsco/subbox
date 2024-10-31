@@ -62,7 +62,7 @@ const currentRoute = props.navigation.filter( item => {
                     class="justify-between gap-2 px-2"
                     block
                 >
-                    <Stack direction="row" align="center" class="gap-2">
+                    <Stack direction="row" items="center" class="gap-2">
                         <component
                             v-if="currentRoute.icon"
                             :is="currentRoute.icon"

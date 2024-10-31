@@ -36,7 +36,7 @@ const onSubmit = handleSubmit((values) => {
 
         <section class="w-full max-w-80 space-y-6">
 
-            <Stack align="center" class="text-center gap-2">
+            <Stack items="center" class="text-center gap-2">
                 <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Forgot password</h1>
                 <p class="text-muted-foreground">Provide your email below to get a password reset link sent to you.</p>
             </Stack>
@@ -87,7 +87,7 @@ const onSubmit = handleSubmit((values) => {
                 v-else
                 direction="row"
                 justify="center"
-                align="center"
+                items="center"
                 class="text-sm gap-2 text-green-700 dark:text-green-500">
                 <MailCheckIcon class="size-4" />
                 {{ props.status }}

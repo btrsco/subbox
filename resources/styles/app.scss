@@ -1,3 +1,5 @@
+@use "sass:meta";
+
 /* Tailwindcss Imports
  * - - - - - - - - - - - - - - */
 
@@ -32,8 +34,8 @@
         --secondary: 240 4.8% 95.9%;
         --secondary-foreground: 240 5.9% 10%;
 
-        --accent: 21, 100%, 86%;
-        --accent-foreground: 22, 84%, 55%;
+        --accent: 22, 84%, 55%;
+        --accent-foreground: 0 0% 100%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
@@ -94,19 +96,19 @@
 
     /* Base Layer Imports
      * - - - - - - - - - - - - - - */
-    @import 'layers/base/app-root';
+    @include meta.load-css('layers/base/app-root');
 }
 
 @layer components {
     /* Components Layer Imports
      * - - - - - - - - - - - - - - */
-    // @import 'layers/components/...';
+    //@include meta.load-css('layers/components/...');
 }
 
 @layer utilities {
     /* Utilities Layer Imports
      * - - - - - - - - - - - - - - */
-    // @import 'layers/utils/...';
+    // @include meta.load-css('layers/utils/...');
 }
 
 

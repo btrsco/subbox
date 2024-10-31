@@ -11,4 +11,5 @@ enum MetricKey: string
     case EMAIL_VERIFIED = 'auth.email_verified';
     case ONBOARDING_STARTED = 'onboarding.started';
     case ONBOARDING_COMPLETED = 'onboarding.completed';
+    case SETUP_COMPLETED = 'setup.completed';
 }

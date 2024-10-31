@@ -20,4 +20,12 @@ class EmailSubscriberFactory extends Factory
             //
         ];
     }
+
+    public function faked(): static
+    {
+        return $this->state(fn(array $attributes) => [
+            'email' => fake()->unique()->safeEmail(),
+            'name'  => fake()->boolean(25) ? fake()->name() : null,
+        ]);
+    }
 }

@@ -49,7 +49,7 @@ const onSubmit = handleSubmit((values) => {
 
         <section class="w-full max-w-80 space-y-6">
 
-            <Stack align="center" class="text-center gap-2">
+            <Stack items="center" class="text-center gap-2">
                 <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Reset password</h1>
                 <p class="text-muted-foreground">Enter your new password below.</p>
             </Stack>

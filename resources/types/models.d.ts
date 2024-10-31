@@ -13,6 +13,9 @@ declare namespace App.Models {
         blog?: App.Models.Blog | null
         metrics?: Array<App.Models.Metric> | null
         sessions?: Array<App.Models.Session> | null
+
+        // Computed
+        initials?: string
     }
 
     export type Metric = {
@@ -54,6 +57,7 @@ declare namespace App.Models {
         user?: App.Models.User | null
 
         // Computed
+        initials?: string
         url?: string
     }
 
@@ -73,8 +77,6 @@ declare namespace App.Models {
         blog?: App.Models.Blog | null
     }
 
-    export type Subscriber = App.Models.User | App.Models.EmailSubscriber
-
     export type EmailSubscriber = {
         id: number
         email: string
@@ -84,5 +86,28 @@ declare namespace App.Models {
 
         // Relationships
         subscriptions?: Array<App.Models.Subscription> | null
+    }
+
+    export type Subscriber = App.Models.User | App.Models.EmailSubscriber
+
+    export type Post = {
+        id: number
+        user_id: number
+        blog_id: number
+        title: string
+        slug: string
+        subtitle: string | null
+        content: string | null
+        published_at: string | null
+        created_at: string | null
+        updated_at: string | null
+        deleted_at: string | null
+
+        // Relationships
+        user?: App.Models.User | null
+        blog?: App.Models.Blog | null
+
+        // Computed
+        status?: 'published' | 'draft' | 'scheduled' | 'archived'
     }
 }

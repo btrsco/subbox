@@ -39,7 +39,6 @@ class User extends Authenticatable implements MustVerifyEmail
             'name',
             'email',
             'password',
-            'role',
             'email_verified_at',
         ];
 
@@ -94,5 +93,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function subscriptions(): MorphMany
     {
         return $this->morphMany(Subscription::class, 'subscriber');
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 }

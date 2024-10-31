@@ -32,16 +32,18 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            'auth'       => [
-                'user' => $request->user(),
+            'auth'  => [
+                'user'           => $request->user(),
+                'email_verified' => optional($request->user())->hasVerifiedEmail(),
+                'blog'           => optional($request->user())->blog,
             ],
-            'app'        => [
+            'app'   => [
                 'name'   => config('app.name'),
                 'locale' => app()->getLocale(),
                 'meta'   => config('meta'),
                 'social' => config('social'),
             ],
-            'ziggy'      => fn() => [
+            'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],

@@ -19,7 +19,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 
         <section class="w-full max-w-80 space-y-6">
 
-            <Stack align="center" class="text-center gap-2">
+            <Stack items="center" class="text-center gap-2">
                 <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Email verification</h1>
                 <p class="text-muted-foreground">
                     Before getting started, you must verify your email address. If you didn't receive the
@@ -31,7 +31,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                 v-if="verificationLinkSent"
                 direction="row"
                 justify="center"
-                align="center"
+                items="center"
                 class="text-sm gap-2 text-green-700 dark:text-green-500">
                 <MailCheckIcon class="size-4" />
                 A new verification link has been sent to you.
@@ -44,7 +44,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 
             <Button
                 :as="Link"
-                :href="route('settings.account.edit')"
+                :href="route('dashboard.settings.account.edit')"
                 variant="secondary"
                 block>
                 Update email address

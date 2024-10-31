@@ -8,6 +8,10 @@ class SubscriptionObserver
 {
     public function creating(Subscription $subscription): void
     {
-        $subscription->verification_token = str()->random(60);
+        $subscription->verification_token = md5(
+            $subscription->subscriber_id.':'
+            .$subscription->subscriber_type.':'
+            .$subscription->blog_id
+        );
     }
 }

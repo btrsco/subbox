@@ -4,13 +4,6 @@ import { SocialConfig } from '@/scripts/types/config/social'
 import { type Component } from 'vue'
 
 declare namespace PageProps {
-    export interface User {
-        id: number
-        name: string
-        email: string
-        email_verified_at: string
-    }
-
     export interface App {
         name: string
         locale: string
@@ -21,7 +14,9 @@ declare namespace PageProps {
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
-        user: PageProps.User | null
+        user: App.Models.User | null
+        email_verified: boolean | null
+        blog: App.Models.Blog | null
     }
     app: PageProps.App
     ziggy: ZiggyConfig & { location: string }
@@ -45,3 +40,43 @@ export interface NavigationItem {
 }
 
 export type Theme = 'light' | 'dark' | 'system'
+
+export type Pagination = {
+    current_page: number
+    data: Array<any>
+    first_page_url: string | null
+    from: number | null
+    last_page: number
+    last_page_url: string | null
+    links: Array<{
+        url: string | null
+        label: string
+        active: boolean
+    }>
+    next_page_url: string | null
+    path: string
+    per_page: number
+    prev_page_url: string | null
+    to: number | null
+    total: number
+}
+
+export type PostStatus = 'published' | 'draft' | 'scheduled' | 'archived'
+
+export type PostOrder = 'newest' | 'oldest' | 'updated' | 'title'
+
+export type PostCounts = {
+    published: number
+    drafts: number
+    scheduled: number
+}
+
+// Paginated Model Types
+
+export interface PostPagination extends Pagination {
+    data: App.Models.Post[]
+}
+
+export interface SubscriptionPagination extends Pagination {
+    data: App.Models.Subscription[]
+}

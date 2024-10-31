@@ -23,13 +23,13 @@ const onSubmit = () => {
                 <CardDescription>
                     Head on over to
                     <a
-                        :href="route('blogs.show', {blog: blog.slug})"
+                        :href="route('blog.index', {blog: blog.slug})"
                         target="_blank"
                         class="text-primary font-medium underline underline-offset-2"
                     >
-                        {{ route('blogs.show', {blog: blog.slug}) }}
+                        {{ route('blog.index', {blog: blog.slug}) }}
                     </a>
-                    and tell the world about {{ blog.name }}.
+                    and tell the world about <span class="text-primary font-medium">{{ blog.name }}</span>.
                 </CardDescription>
             </CardHeader>
 

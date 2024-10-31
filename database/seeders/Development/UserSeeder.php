@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(99)
+        User::factory(24)
             ->faked()
             ->create();
     }

@@ -39,7 +39,7 @@ const onSubmit = () => {
             onSuccess: () => {
                 if (props.status !== 'two-factor-challenge-passed') return
 
-                router.visit(route('dashboard'))
+                router.visit(route('dashboard.home.index'))
             },
         })
     } else {
@@ -53,7 +53,7 @@ const onSubmit = () => {
             onSuccess: () => {
                 if (props.status !== 'two-factor-challenge-passed') return
 
-                router.visit(route('dashboard'))
+                router.visit(route('dashboard.home.index'))
             },
         })
     }
@@ -72,7 +72,7 @@ const toggleRecoveryCodeInput = () => {
 
         <section class="w-full max-w-80 space-y-6">
 
-            <Stack align="center" class="text-center gap-2">
+            <Stack items="center" class="text-center gap-2">
                 <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Authentication code</h1>
                 <p class="text-muted-foreground">
                     This is a secure area of the application. Please confirm your two-factor
@@ -85,7 +85,7 @@ const toggleRecoveryCodeInput = () => {
                 <Stack
                     v-if="!showRecoveryCodeInput"
                     justify="center"
-                    align="center"
+                    items="center"
                     @complete="onSubmit"
                 >
                     <PinInput

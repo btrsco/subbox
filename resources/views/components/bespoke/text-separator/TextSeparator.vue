@@ -11,7 +11,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <Stack direction="row" justify="center" align="center" class="relative w-full gap-3">
+    <Stack direction="row" justify="center" items="center" class="relative w-full gap-3">
         <Separator class="flex-1" />
         <div :class="cn(textSeparatorVariants({size}), 'text-muted-foreground')">{{ text }}</div>
         <Separator class="flex-1" />

@@ -14,7 +14,7 @@ class BlogController extends Controller
         $user = auth()->user();
         $user->incrementMetric(MetricKey::ONBOARDING_STARTED);
 
-        if ($user->blog->exists()) {
+        if ($user->blog?->exists()) {
             return redirect()->route('onboarding.subscribers');
         }
 

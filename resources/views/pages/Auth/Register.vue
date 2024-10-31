@@ -50,7 +50,7 @@ const onSubmit = handleSubmit((values) => {
     <AuthLayout title="Register An Account">
         <section class="w-full max-w-80 space-y-6">
 
-            <Stack align="center" class="text-center gap-2">
+            <Stack items="center" class="text-center gap-2">
                 <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Join the community</h1>
                 <p class="text-muted-foreground">Register to access your dashboard, settings and content.</p>
             </Stack>
@@ -179,7 +179,7 @@ const onSubmit = handleSubmit((values) => {
 
             <Stack
                 as="footer"
-                align="center"
+                items="center"
                 class="gap-2 text-sm text-center text-muted-foreground"
             >
                 <section>

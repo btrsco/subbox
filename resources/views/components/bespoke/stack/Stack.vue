@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
     class?: HTMLAttributes['class'];
     as?: AsTag | Component;
     direction?: StackVariants['direction'];
-    align?: StackVariants['align'];
+    items?: StackVariants['items'];
     justify?: StackVariants['justify'];
     wrap?: StackVariants['wrap'];
     block?: boolean;
@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<{
 <template>
     <component
         :is="props.as"
-        :class="cn(stackVariants({direction, align, justify, wrap}), props.class ?? '', {'w-full': props.block})"
+        :class="cn(stackVariants({direction, items, justify, wrap}), props.class ?? '', {'w-full': props.block})"
     >
         <slot />
     </component>

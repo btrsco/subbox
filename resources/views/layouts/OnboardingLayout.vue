@@ -11,34 +11,30 @@ const props = defineProps<OnboardingLayout>()
 <template>
     <PageHead :title="title" />
 
-    <Stack
-        as="header"
-        direction="row"
-        align="center"
-        class="hidden md:flex gap-4 p-4"
-    >
-        <Button
-            as="a"
-            variant="outline"
-            size="icon-xs"
-            :href="route('home')"
+    <Stack class="bg-muted/50">
+        <Stack
+            as="header"
+            direction="row"
+            items="center"
+            class="hidden md:flex gap-4 p-4"
         >
-            <ChevronLeftIcon class="size-4 text-muted-foreground"></ChevronLeftIcon>
-        </Button>
-        <BookmarkIcon class="size-6 text-accent-foreground"></BookmarkIcon>
-    </Stack>
+            <Button
+                as="a"
+                variant="outline"
+                size="icon-xs"
+                :href="route('home')"
+            >
+                <ChevronLeftIcon class="size-4 text-muted-foreground"></ChevronLeftIcon>
+            </Button>
+            <BookmarkIcon class="size-6 text-accent"></BookmarkIcon>
+        </Stack>
 
-    <Stack
-        as="main"
-        align="center"
-        class="w-full min-h-screen p-4 gap-4"
-    >
-        <slot />
+        <Stack
+            as="main"
+            items="center"
+            class="w-full min-h-screen p-4 gap-4"
+        >
+            <slot />
+        </Stack>
     </Stack>
 </template>
-
-<style lang="scss">
-body {
-    @apply bg-muted/75;
-}
-</style>

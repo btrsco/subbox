@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
             ],
             'development' => [
                 Development\UserSeeder::class,
+                Development\EmailSubscriberSeeder::class,
+                Development\BlogSeeder::class,
+                Development\PostSeeder::class,
+                Development\SubscriptionSeeder::class,
             ],
         ];
 

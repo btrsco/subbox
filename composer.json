@@ -19,6 +19,7 @@
         "pestphp/pest": "^3.5",
         "pestphp/pest-plugin-laravel": "^3.0",
         "spatie/laravel-medialibrary": "^11.9",
+        "spatie/laravel-sluggable": "^3.6",
         "spatie/laravel-typescript-transformer": "^2.5",
         "spatie/typescript-transformer": "^2.4",
         "tightenco/ziggy": "^2.3"

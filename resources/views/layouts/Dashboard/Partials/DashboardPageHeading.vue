@@ -22,7 +22,7 @@ const props = defineProps<{
         <Stack
             v-if="props.icon"
             justify="center"
-            align="center"
+            items="center"
             class="size-6 sm:size-8 rounded-md border mt-0.5 sm:mt-0 lg:mt-0.5 overflow-hidden"
         >
             <img
@@ -38,24 +38,42 @@ const props = defineProps<{
             />
         </Stack>
 
-        <Stack as="hgroup" class="gap-1">
-            <Stack as="h1" direction="row" align="center" class="gap-2">
-                <span class="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight">{{ props.heading }}</span>
-                <Badge v-if="props.count" variant="outline" class="text-sm lg:text-base px-2">{{ props.count }}</Badge>
+        <Stack
+            direction="row"
+            justify="between"
+            class="w-full"
+        >
+            <Stack
+                as="hgroup"
+                class="gap-1 mr-auto"
+            >
+                <Stack
+                    as="h1"
+                    direction="row"
+                    items="center"
+                    class="gap-2"
+                >
+                    <span class="text-2xl sm:text-3xl font-bold tracking-tight">{{ props.heading }}</span>
+                    <Badge
+                        v-if="props.count"
+                        variant="outline"
+                        class="text-sm lg:text-base px-2"
+                    >
+                        {{ props.count }}
+                    </Badge>
 
-                <aside v-if="$slots.details" class="ml-6">
-                    <slot name="details" />
-                </aside>
+                    <aside v-if="$slots.details" class="ml-6">
+                        <slot name="details" />
+                    </aside>
+                </Stack>
+
+                <h2 v-if="props.subheading" class="text-sm text-muted-foreground">
+                    {{ props.subheading }}
+                </h2>
             </Stack>
 
-            <h2 v-if="props.subheading" class="text-sm text-muted-foreground">
-                {{ props.subheading }}
-            </h2>
+            <slot name="actions" />
         </Stack>
 
     </Stack>
 </template>
-
-<style scoped>
-
-</style>

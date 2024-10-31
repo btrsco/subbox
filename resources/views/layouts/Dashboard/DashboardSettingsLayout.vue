@@ -9,19 +9,19 @@ const props = defineProps<DashboardLayoutProps>()
 const secondaryNavigation: NavigationItem[] = [
     {
         label: 'Account',
-        route: 'settings.account.edit',
+        route: 'dashboard.settings.account.edit',
         type: 'link',
         icon: CircleUserIcon,
     },
     {
         label: 'Password & Security',
-        route: 'settings.security.edit',
+        route: 'dashboard.settings.security.edit',
         type: 'link',
         icon: LockKeyholeIcon,
     },
     {
         label: 'Sessions',
-        route: 'settings.sessions.edit',
+        route: 'dashboard.settings.sessions.edit',
         type: 'link',
         icon: MonitorSmartphoneIcon,
     }
