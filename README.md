@@ -1,13 +1,13 @@
-# Subbox - Stubstack-like blog platform
+# Subbox - Substack-like blog platform
 
 > Subbox is an application built with Laravel 11 and Vue 3.
-> Simple Stubstack-like blog platform that allows users to create and update blog posts, allowing guests to view the posts and subscribe to the blog via email.
+> Simple Substack-like blog platform that allows users to create and update blog posts, allowing guests to view the posts and subscribe to the blog via email.
 > Built as an assessment of my skills as a full-stack developer.
 
 ## Table of Contents
 
 <!-- TOC -->
-* [Subbox - Stubstack-like blog platform](#subbox---stubstack-like-blog-platform)
+* [Subbox - Substack-like blog platform](#subbox---substack-like-blog-platform)
   * [Table of Contents](#table-of-contents)
 * [Getting Started](#getting-started)
   * [Assumptions](#assumptions)
